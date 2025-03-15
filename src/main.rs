@@ -1,14 +1,11 @@
 // use mahc::calc::get_yaku_han;
 // use mahc::hand;
-use core::hash;
 use indicatif::{ProgressBar, ProgressStyle};
 use mahjong_handle_solver::store;
 use mahjong_handle_solver::utils::STYLE;
 use mahjong_handle_solver::{generator::Generator, handle::Handle};
-use rand::Rng;
 use std::collections::HashMap;
 use std::io::prelude::*;
-use std::os::macos::raw;
 use std::{fs::File, io::Write};
 
 fn generate_data(pb: ProgressBar) {
