@@ -2,7 +2,8 @@ use super::handle::Handle;
 use super::store;
 use super::utils::{koutsu_of_tile, next_tile, shuntsu_of_tile, toitsu_of_tile};
 use riichi::agenda::AgendaName;
-use riichi::hand::{AgendaResult, PartitionedHand};
+use riichi::hand::PartitionedHand;
+use riichi::score::Score;
 use riichi::tile::Tile;
 use std::iter::Iterator;
 use std::sync::mpsc::{Receiver, Sender, channel};
@@ -172,8 +173,8 @@ impl Finder {
     fn get_flags(partitions: PartitionedHand) -> u8 {
         let mut flags: u8 = 0;
         match partitions.calculate_score(riichi::agendas_template::AGENDAS_TEMPLATE) {
-            AgendaResult::Done => flags |= store::MASK_TRUE_ALWAYS,
-            AgendaResult::Name(agenda_names) => {
+            Score::Done => flags |= store::MASK_TRUE_ALWAYS,
+            Score::Name(agenda_names) => {
                 let have_pinfu = agenda_names.contains(&AgendaName::Pinfu);
                 let mut have_pinfu_pending_jantou = false;
                 for name in &agenda_names {

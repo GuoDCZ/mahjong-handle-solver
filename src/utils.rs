@@ -1,5 +1,5 @@
 use riichi::tile::Tile;
-use riichi::tile_group::{KokushiGroup, KoutsuGroup, ShuntsuGroup, TileGroup, ToitsuGroup};
+use riichi::tile_group::{KoutsuGroup, ShuntsuGroup, TileGroup, ToitsuGroup};
 
 pub const STYLE: &str = "[{elapsed_precise}]-[{eta_precise}] {bar:40} {pos}/{len} {msg}";
 
@@ -197,24 +197,4 @@ pub fn shuntsu_of_tile(tile: Tile) -> Option<TileGroup> {
         _ => return None,
     };
     Some(TileGroup::Shuntsu(shuntsu))
-}
-
-pub fn tile_of_kokushi(kokushi: KokushiGroup) -> Tile {
-    use KokushiGroup::*;
-    use Tile::*;
-    match kokushi {
-        _119m19p19s1234567z => _1m,
-        _199m19p19s1234567z => _9m,
-        _19m119p19s1234567z => _1p,
-        _19m199p19s1234567z => _9p,
-        _19m19p119s1234567z => _1s,
-        _19m19p199s1234567z => _9s,
-        _19m19p19s11234567z => _1z,
-        _19m19p19s12234567z => _2z,
-        _19m19p19s12334567z => _3z,
-        _19m19p19s12344567z => _4z,
-        _19m19p19s12345567z => _5z,
-        _19m19p19s12345667z => _6z,
-        _19m19p19s12345677z => _7z,
-    }
 }

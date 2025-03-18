@@ -23,7 +23,7 @@ pub const MASK_TRUE_ALWAYS: u8 = 0b10000000;
 pub fn set_hand(info: &mut u128, hand: [u8; 14]) {
     let mut shift = 8;
     for i in 0..14 {
-        *info |= ((hand[i] as u128) << shift);
+        *info |= (hand[i] as u128) << shift;
         shift += 6;
     }
 }
